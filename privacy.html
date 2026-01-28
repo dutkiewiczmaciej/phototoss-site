@@ -9,234 +9,176 @@
     <style>
         :root {
             --accent: #E8A090;
-            --accent-dark: #d4887a;
             --keep: #4ECDC4;
-            --text: #333;
-            --text-light: #666;
-            --bg: #ffffff;
-            --bg-secondary: #f8f8fa;
+            --text: #1a1a1a;
+            --text-secondary: #8e8e93;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-secondary);
+            background: #fff;
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .header {
-            background: white;
-            padding: 40px 20px;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .header a {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
         }
 
-        .logo {
-            max-width: 200px;
-            height: auto;
-            margin-bottom: 15px;
+        .app-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
         }
 
-        .header p {
-            color: var(--accent-dark);
-            font-size: 1.1em;
-            font-weight: 500;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(78, 205, 196, 0.12) 0%, rgba(78, 205, 196, 0.05) 100%);
-            border: 1px solid rgba(78, 205, 196, 0.3);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .highlight-box .icon {
-            font-size: 2.5em;
-            margin-bottom: 12px;
-        }
-
-        .highlight-box h2 {
-            color: #2a9d8f;
+        .header h1 {
             font-size: 1.2em;
-            margin-bottom: 8px;
-        }
-
-        .highlight-box p {
-            color: var(--text-light);
-            margin: 0;
-        }
-
-        .section {
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 15px;
-        }
-
-        .section h2 {
-            color: var(--accent-dark);
-            margin: 0 0 12px 0;
-            font-size: 1.15em;
             font-weight: 600;
         }
 
-        .section p {
-            color: var(--text-light);
+        .page-title {
+            padding: 30px 20px 0;
+            text-align: center;
+        }
+
+        .page-title h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .highlight {
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .highlight p {
+            color: #2a9d8f;
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 25px 0 10px;
+        }
+
+        p {
+            color: #444;
             margin-bottom: 12px;
         }
 
-        .section p:last-child {
-            margin-bottom: 0;
-        }
-
         ul {
-            padding-left: 0;
-            list-style: none;
-            margin: 15px 0;
+            padding-left: 20px;
+            margin: 12px 0;
         }
 
         li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-
-        li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--keep);
-            font-weight: bold;
+            color: #444;
+            margin-bottom: 8px;
         }
 
         a {
-            color: var(--accent-dark);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+            color: var(--accent);
         }
 
         .updated {
-            color: var(--text-light);
-            font-size: 0.9em;
-            margin-top: 30px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            margin-top: 40px;
             text-align: center;
         }
 
         footer {
             padding: 30px 20px;
             text-align: center;
-            background: white;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #f0f0f0;
         }
 
         footer a {
-            margin: 0 15px;
-            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.9em;
         }
 
         .copyright {
-            margin-top: 12px;
-            color: var(--text-light);
-            font-size: 0.85em;
-        }
-
-        @media (max-width: 600px) {
-            .header { padding: 30px 20px; }
-            .logo { max-width: 160px; }
-            .container { padding: 25px 15px; }
+            margin-top: 10px;
+            color: var(--text-secondary);
+            font-size: 0.8em;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="header-content">
-            <a href="index.html"><img src="logo.png" alt="PhotoToss" class="logo"></a>
-            <p>Privacy Policy</p>
-        </div>
+        <a href="index.html">
+            <img src="appicon.png" alt="PhotoToss" class="app-icon">
+            <h1>PhotoToss</h1>
+        </a>
+    </div>
+
+    <div class="page-title">
+        <h2>Privacy Policy</h2>
     </div>
 
     <div class="container">
-        <div class="highlight-box">
-            <div class="icon">🔒</div>
-            <h2>Your Privacy is Protected</h2>
-            <p>PhotoToss operates 100% offline. Your photos never leave your device.</p>
+        <div class="highlight">
+            <p>🔒 Your photos never leave your device. PhotoToss works 100% offline.</p>
         </div>
 
-        <div class="section">
-            <h2>Data Collection</h2>
-            <p><strong style="color: #2a9d8f;">We do not collect any personal data.</strong> PhotoToss operates entirely on your device.</p>
-            <ul>
-                <li>Your photos are never uploaded to any server</li>
-                <li>We do not track your usage or behavior</li>
-                <li>We do not use analytics or advertising SDKs</li>
-                <li>We do not require account registration</li>
-            </ul>
-        </div>
+        <h3>Data Collection</h3>
+        <p><strong>We do not collect any personal data.</strong> PhotoToss operates entirely on your device.</p>
+        <ul>
+            <li>Your photos are never uploaded to any server</li>
+            <li>We do not track your usage or behavior</li>
+            <li>We do not use analytics or advertising SDKs</li>
+            <li>We do not require account registration</li>
+        </ul>
 
-        <div class="section">
-            <h2>Photo Access</h2>
-            <p>PhotoToss requires access to your photo library to function. This access is used solely to:</p>
-            <ul>
-                <li>Display your photos for review</li>
-                <li>Delete photos you choose to remove (with your confirmation)</li>
-                <li>Add photos to your Favorites when you swipe up</li>
-            </ul>
-            <p>All photo processing happens locally on your device. Photos are never transmitted over the internet.</p>
-        </div>
+        <h3>Photo Access</h3>
+        <p>PhotoToss requires access to your photo library to function. This access is used solely to:</p>
+        <ul>
+            <li>Display your photos for review</li>
+            <li>Delete photos you choose to remove (with your confirmation)</li>
+            <li>Add photos to your Favorites when you swipe up</li>
+        </ul>
+        <p>All photo processing happens locally on your device.</p>
 
-        <div class="section">
-            <h2>Data Storage</h2>
-            <p>PhotoToss stores minimal data on your device:</p>
-            <ul>
-                <li>IDs of photos you've already reviewed (to avoid showing them again)</li>
-                <li>Your app preferences (like buffer size setting)</li>
-                <li>Lifetime statistics (photos deleted, space saved)</li>
-            </ul>
-            <p>This data is stored locally using Apple's secure storage mechanisms and is never shared.</p>
-        </div>
+        <h3>Data Storage</h3>
+        <p>PhotoToss stores minimal data on your device:</p>
+        <ul>
+            <li>IDs of photos you've already reviewed</li>
+            <li>Your app preferences</li>
+            <li>Session statistics</li>
+        </ul>
+        <p>This data is stored locally and never shared.</p>
 
-        <div class="section">
-            <h2>iCloud</h2>
-            <p>If you use iCloud Photo Library, PhotoToss can access photos stored in iCloud. These photos are downloaded directly from Apple's iCloud service to your device - PhotoToss never acts as an intermediary.</p>
-        </div>
+        <h3>iCloud</h3>
+        <p>If you use iCloud Photo Library, PhotoToss downloads photos directly from Apple's iCloud service to your device.</p>
 
-        <div class="section">
-            <h2>Third-Party Services</h2>
-            <p>PhotoToss does not integrate with any third-party services, analytics platforms, or advertising networks.</p>
-        </div>
+        <h3>Third-Party Services</h3>
+        <p>PhotoToss does not integrate with any third-party services, analytics, or advertising.</p>
 
-        <div class="section">
-            <h2>Children's Privacy</h2>
-            <p>PhotoToss does not knowingly collect information from children under 13. The app is intended for general audiences.</p>
-        </div>
-
-        <div class="section">
-            <h2>Changes to This Policy</h2>
-            <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated revision date.</p>
-        </div>
-
-        <div class="section">
-            <h2>Contact</h2>
-            <p>If you have questions about this privacy policy, please contact us at: <a href="mailto:makmakapps@gmail.com">makmakapps@gmail.com</a></p>
-        </div>
+        <h3>Contact</h3>
+        <p>Questions? Email us at <a href="mailto:makmakapps@gmail.com">makmakapps@gmail.com</a></p>
 
         <p class="updated">Last updated: January 28, 2026</p>
     </div>
@@ -244,7 +186,7 @@
     <footer>
         <a href="index.html">Home</a>
         <a href="support.html">Support</a>
-        <p class="copyright">© 2026 Maciej Dutkiewicz. All rights reserved.</p>
+        <p class="copyright">© 2026 Maciej Dutkiewicz</p>
     </footer>
 </body>
 </html>

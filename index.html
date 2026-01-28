@@ -5,25 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PhotoToss - Swipe to Clean Your Photos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --accent: #E8A090;
-            --accent-dark: #d4887a;
             --delete: #FF6B6B;
             --keep: #4ECDC4;
             --favorite: #FFD93D;
-            --text: #333;
-            --text-light: #666;
-            --bg: #ffffff;
-            --bg-secondary: #f8f8fa;
+            --text: #1a1a1a;
+            --text-secondary: #8e8e93;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
+            background: #fff;
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .hero {
@@ -34,242 +31,178 @@
             justify-content: center;
             text-align: center;
             padding: 60px 20px;
-            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
         }
 
-        .content { max-width: 700px; }
+        .content { max-width: 600px; }
 
-        .logo {
-            max-width: 280px;
-            height: auto;
-            margin-bottom: 30px;
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 27px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 40px rgba(232, 160, 144, 0.3);
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
         .tagline {
-            font-size: 1.5em;
-            color: var(--accent-dark);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .description {
-            font-size: 1.15em;
-            color: var(--text-light);
-            line-height: 1.7;
-            margin-bottom: 50px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
         }
 
         .swipe-demo {
             display: flex;
-            gap: 30px;
+            gap: 40px;
             justify-content: center;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
+            margin-bottom: 40px;
         }
 
         .swipe-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
         }
 
         .swipe-icon {
-            width: 70px;
-            height: 70px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
+            font-size: 22px;
+            font-weight: 600;
             color: white;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .swipe-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .swipe-delete {
-            background: var(--delete);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.35);
-        }
-
-        .swipe-keep {
-            background: var(--keep);
-            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.35);
-        }
-
-        .swipe-favorite {
-            background: var(--favorite);
-            color: #333;
-            box-shadow: 0 8px 25px rgba(255, 217, 61, 0.35);
-        }
+        .swipe-delete { background: var(--delete); }
+        .swipe-keep { background: var(--keep); }
+        .swipe-favorite { background: var(--favorite); color: #333; }
 
         .swipe-label {
-            font-size: 0.9em;
-            color: var(--text-light);
-            font-weight: 500;
+            font-size: 0.85em;
+            color: var(--text-secondary);
         }
 
-        .buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
+        .app-store-btn {
+            display: inline-block;
+            margin-bottom: 50px;
         }
 
-        .btn {
-            padding: 16px 36px;
-            border-radius: 14px;
-            font-size: 1em;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 8px 25px rgba(232, 160, 144, 0.4);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(232, 160, 144, 0.5);
+        .app-store-btn img {
+            height: 54px;
         }
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
             text-align: left;
         }
 
         .feature {
-            background: white;
-            padding: 28px;
-            border-radius: 16px;
-            border: 1px solid #eee;
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
-
-        .feature:hover {
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transform: translateY(-3px);
+            padding: 20px;
         }
 
         .feature-icon {
-            font-size: 2.2em;
-            margin-bottom: 15px;
+            font-size: 1.8em;
+            margin-bottom: 10px;
         }
 
         .feature h3 {
-            font-size: 1.1em;
-            margin-bottom: 8px;
-            color: var(--text);
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 4px;
         }
 
         .feature p {
-            font-size: 0.95em;
-            color: var(--text-light);
-            line-height: 1.6;
+            font-size: 0.9em;
+            color: var(--text-secondary);
         }
 
         footer {
             padding: 40px 20px;
             text-align: center;
-            background: var(--bg-secondary);
-            border-top: 1px solid #eee;
         }
 
         footer a {
-            color: var(--accent-dark);
+            color: var(--text-secondary);
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
+            margin: 0 12px;
+            font-size: 0.9em;
         }
 
         footer a:hover {
-            text-decoration: underline;
+            color: var(--accent);
         }
 
         .copyright {
-            margin-top: 15px;
-            color: var(--text-light);
-            font-size: 0.85em;
+            margin-top: 12px;
+            color: var(--text-secondary);
+            font-size: 0.8em;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 500px) {
             .hero { padding: 40px 20px; }
-            .logo { max-width: 220px; }
-            .tagline { font-size: 1.2em; }
-            .description { font-size: 1em; }
-            .swipe-demo { gap: 20px; }
-            .swipe-icon { width: 60px; height: 60px; font-size: 24px; }
+            h1 { font-size: 1.7em; }
+            .swipe-demo { gap: 25px; }
+            .swipe-icon { width: 50px; height: 50px; font-size: 20px; }
+            .features { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="hero">
         <div class="content">
-            <img src="logo.png" alt="PhotoToss" class="logo">
+            <img src="appicon.png" alt="PhotoToss" class="app-icon">
+            <h1>PhotoToss</h1>
             <p class="tagline">Dating App for Your Photos</p>
-            <p class="description">
-                Swipe through your photos like a dating app. Left to delete, right to keep, up to favorite.
-                Clean up your photo library and free up storage in minutes!
-            </p>
 
             <div class="swipe-demo">
                 <div class="swipe-item">
                     <div class="swipe-icon swipe-delete">✕</div>
-                    <span class="swipe-label">Swipe Left</span>
+                    <span class="swipe-label">Delete</span>
                 </div>
                 <div class="swipe-item">
                     <div class="swipe-icon swipe-keep">✓</div>
-                    <span class="swipe-label">Swipe Right</span>
+                    <span class="swipe-label">Keep</span>
                 </div>
                 <div class="swipe-item">
                     <div class="swipe-icon swipe-favorite">♥</div>
-                    <span class="swipe-label">Swipe Up</span>
+                    <span class="swipe-label">Favorite</span>
                 </div>
             </div>
 
-            <div class="buttons">
-                <a href="#" class="btn btn-primary">
-                    <span>🍎</span> Coming Soon to App Store
-                </a>
-            </div>
+            <a href="https://apps.apple.com/app/phototoss" class="app-store-btn">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+            </a>
 
             <div class="features">
                 <div class="feature">
                     <div class="feature-icon">🔒</div>
                     <h3>100% Private</h3>
-                    <p>Your photos never leave your device. No uploads, no tracking, no account required.</p>
+                    <p>Photos never leave your device</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">☁️</div>
                     <h3>iCloud Ready</h3>
-                    <p>Works seamlessly with iCloud Photo Library. Review all your photos, even from the cloud.</p>
+                    <p>Review photos from the cloud</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">✈️</div>
                     <h3>Offline Mode</h3>
-                    <p>Preload up to 1000 photos for airplane mode. Perfect for long flights!</p>
+                    <p>Preload up to 1000 photos</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🌍</div>
                     <h3>21 Languages</h3>
-                    <p>Available in English, Polish, German, French, Spanish, and 16 more languages.</p>
+                    <p>Available worldwide</p>
                 </div>
             </div>
         </div>
@@ -278,7 +211,7 @@
     <footer>
         <a href="privacy.html">Privacy Policy</a>
         <a href="support.html">Support</a>
-        <p class="copyright">© 2026 Maciej Dutkiewicz. All rights reserved.</p>
+        <p class="copyright">© 2026 Maciej Dutkiewicz</p>
     </footer>
 </body>
 </html>
