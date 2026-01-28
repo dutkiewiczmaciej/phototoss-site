@@ -9,19 +9,21 @@
     <style>
         :root {
             --accent: #E8A090;
+            --accent-dark: #d4887a;
             --delete: #FF6B6B;
             --keep: #4ECDC4;
             --favorite: #FFD93D;
-            --dark: #1a1a2e;
-            --gray: #6b7280;
+            --text: #333;
+            --text-light: #666;
+            --bg: #ffffff;
+            --bg-secondary: #f8f8fa;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--dark);
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
         }
 
         .hero {
@@ -31,99 +33,196 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
-            position: relative;
-            background: radial-gradient(ellipse at top, #2d2d4a 0%, var(--dark) 70%);
+            padding: 60px 20px;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .content { position: relative; z-index: 1; max-width: 600px; }
+        .content { max-width: 700px; }
 
         .logo {
-            width: 120px; height: 120px;
-            background: linear-gradient(135deg, var(--accent) 0%, #d4887a 100%);
-            border-radius: 28px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 60px;
-            margin: 0 auto 30px;
-            box-shadow: 0 20px 60px rgba(232, 160, 144, 0.3);
+            max-width: 280px;
+            height: auto;
+            margin-bottom: 30px;
         }
 
-        h1 {
-            font-size: 3.5em; font-weight: 800; margin-bottom: 10px;
-            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        .tagline {
+            font-size: 1.5em;
+            color: var(--accent-dark);
+            margin-bottom: 15px;
+            font-weight: 600;
         }
 
-        .tagline { font-size: 1.4em; color: var(--accent); margin-bottom: 20px; font-weight: 500; }
-        .description { font-size: 1.1em; color: #a0a0b0; line-height: 1.7; margin-bottom: 40px; }
+        .description {
+            font-size: 1.15em;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 50px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-        .swipe-demo { display: flex; gap: 20px; justify-content: center; margin-bottom: 50px; flex-wrap: wrap; }
-        .swipe-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .swipe-demo {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .swipe-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
         .swipe-icon {
-            width: 60px; height: 60px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 24px; font-weight: bold;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .swipe-icon:hover { transform: scale(1.1); }
-        .swipe-delete { background: var(--delete); box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3); }
-        .swipe-keep { background: var(--keep); box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3); }
-        .swipe-favorite { background: var(--favorite); color: #333; box-shadow: 0 10px 30px rgba(255, 217, 61, 0.3); }
-        .swipe-label { font-size: 0.85em; color: var(--gray); }
 
-        .buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .swipe-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .swipe-delete {
+            background: var(--delete);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.35);
+        }
+
+        .swipe-keep {
+            background: var(--keep);
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.35);
+        }
+
+        .swipe-favorite {
+            background: var(--favorite);
+            color: #333;
+            box-shadow: 0 8px 25px rgba(255, 217, 61, 0.35);
+        }
+
+        .swipe-label {
+            font-size: 0.9em;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
         .btn {
-            padding: 16px 32px; border-radius: 50px; font-size: 1em; font-weight: 600;
-            text-decoration: none; transition: all 0.3s;
-            display: inline-flex; align-items: center; gap: 8px;
+            padding: 16px 36px;
+            border-radius: 14px;
+            font-size: 1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
+
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent) 0%, #d4887a 100%);
-            color: white; box-shadow: 0 10px 30px rgba(232, 160, 144, 0.3);
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 8px 25px rgba(232, 160, 144, 0.4);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(232, 160, 144, 0.4); }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(232, 160, 144, 0.5);
+        }
 
         .features {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px; margin-top: 60px; text-align: left;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            text-align: left;
         }
+
         .feature {
-            background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.1);
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            transition: box-shadow 0.3s, transform 0.3s;
         }
-        .feature-icon { font-size: 2em; margin-bottom: 15px; }
-        .feature h3 { font-size: 1.1em; margin-bottom: 8px; }
-        .feature p { font-size: 0.9em; color: var(--gray); line-height: 1.5; }
+
+        .feature:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .feature p {
+            font-size: 0.95em;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
 
         footer {
-            padding: 30px 20px; text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            background: var(--dark);
+            padding: 40px 20px;
+            text-align: center;
+            background: var(--bg-secondary);
+            border-top: 1px solid #eee;
         }
-        footer a { color: var(--accent); text-decoration: none; margin: 0 15px; }
-        footer a:hover { text-decoration: underline; }
-        .copyright { margin-top: 15px; color: var(--gray); font-size: 0.85em; }
+
+        footer a {
+            color: var(--accent-dark);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 15px;
+            color: var(--text-light);
+            font-size: 0.85em;
+        }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.5em; }
-            .tagline { font-size: 1.1em; }
-            .logo { width: 100px; height: 100px; font-size: 50px; border-radius: 24px; }
+            .hero { padding: 40px 20px; }
+            .logo { max-width: 220px; }
+            .tagline { font-size: 1.2em; }
+            .description { font-size: 1em; }
+            .swipe-demo { gap: 20px; }
+            .swipe-icon { width: 60px; height: 60px; font-size: 24px; }
         }
     </style>
 </head>
 <body>
     <div class="hero">
         <div class="content">
-            <div class="logo">📸</div>
-            <h1>PhotoToss</h1>
+            <img src="logo.png" alt="PhotoToss" class="logo">
             <p class="tagline">Dating App for Your Photos</p>
             <p class="description">
                 Swipe through your photos like a dating app. Left to delete, right to keep, up to favorite.
